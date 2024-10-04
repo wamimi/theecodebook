@@ -1,6 +1,19 @@
+// Helper function
+fn shift_char(c: char, base: u8, shift: u8) -> char {
+    // Convert char to u8, apply shift, and convert back to char
+    let shifted = (c as u8 - base + shift) % 26 + base;
+    shifted as char
+}
+
 // Function to encrypt plaintext using the Caesar cipher
 fn caesar_cipher(plaintext: &str, shift: u8) -> String {
     plaintext
+        .chars() 
+        .map(|c| match c {
+            'a'..='z' => shift_char(c, b'a', shift).to_ascii_uppercase(),
+            _ => c,  // Non-lowercase characters remain unchanged
+        }) 
+        .collect()
         .chars()  // Convert the input string to a character iterator
         .map(|c| {  // Apply a transformation to each character
             if c.is_ascii_lowercase() {  // Check if the character is a lowercase ASCII letter
