@@ -1,0 +1,13 @@
+[package]
+name = "theecodebook"
+version = "0.1.0"
+edition = "2021"
+
+# For a binary
+[[bin]]
+name = "theecodebook"
+path = "src/ceasarcipher1.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
